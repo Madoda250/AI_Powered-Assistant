@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const ForecastRoute = ForecastRouteImport.update({
   path: '/forecast',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/chat': typeof ChatRoute
   '/forecast': typeof ForecastRoute
   '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/chat': typeof ChatRoute
   '/forecast': typeof ForecastRoute
   '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
@@ -59,21 +67,36 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/chat': typeof ChatRoute
   '/forecast': typeof ForecastRoute
   '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/chat'
+    | '/forecast'
+    | '/insights'
+    | '/inventory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
-  id: '__root__' | '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
+  to: '/' | '/analytics' | '/chat' | '/forecast' | '/insights' | '/inventory'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/chat'
+    | '/forecast'
+    | '/insights'
+    | '/inventory'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  ChatRoute: typeof ChatRoute
   ForecastRoute: typeof ForecastRoute
   InsightsRoute: typeof InsightsRoute
   InventoryRoute: typeof InventoryRoute
@@ -102,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForecastRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/analytics': {
       id: '/analytics'
       path: '/analytics'
@@ -122,6 +152,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
+  ChatRoute: ChatRoute,
   ForecastRoute: ForecastRoute,
   InsightsRoute: InsightsRoute,
   InventoryRoute: InventoryRoute,
