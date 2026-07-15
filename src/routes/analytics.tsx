@@ -46,7 +46,7 @@ function AnalyticsPage() {
       <section className="grid gap-4 md:grid-cols-2">
         <PerfList title="Best Sellers" icon={<Trophy className="h-5 w-5 text-[color:var(--warning-foreground)]" />} rows={bestSellers} metric="units" />
         <PerfList title="Slow Movers" icon={<Turtle className="h-5 w-5 text-muted-foreground" />} rows={slowMovers} metric="units" />
-        <PerfList title="Top Revenue" icon={<DollarSign className="h-5 w-5 text-primary" />} rows={topRevenue} metric="revenue" />
+        <PerfList title="Top Revenue" icon={<Banknote className="h-5 w-5 text-primary" />} rows={topRevenue} metric="revenue" />
         <PerfList title="Highest Profit" icon={<Star className="h-5 w-5 text-[color:var(--success)]" />} rows={topProfit} metric="profit" />
       </section>
 
