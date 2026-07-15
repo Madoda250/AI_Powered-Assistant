@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ForecastRouteImport } from './routes/forecast'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForecastRoute = ForecastRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/forecast': typeof ForecastRoute
+  '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/forecast': typeof ForecastRoute
+  '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/forecast': typeof ForecastRoute
+  '/insights': typeof InsightsRoute
   '/inventory': typeof InventoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analytics' | '/forecast' | '/inventory'
+  fullPaths: '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analytics' | '/forecast' | '/inventory'
-  id: '__root__' | '/' | '/analytics' | '/forecast' | '/inventory'
+  to: '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
+  id: '__root__' | '/' | '/analytics' | '/forecast' | '/insights' | '/inventory'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalyticsRoute: typeof AnalyticsRoute
   ForecastRoute: typeof ForecastRoute
+  InsightsRoute: typeof InsightsRoute
   InventoryRoute: typeof InventoryRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory'
       fullPath: '/inventory'
       preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forecast': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
   ForecastRoute: ForecastRoute,
+  InsightsRoute: InsightsRoute,
   InventoryRoute: InventoryRoute,
 }
 export const routeTree = rootRouteImport
