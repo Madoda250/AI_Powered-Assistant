@@ -148,9 +148,9 @@ export function generateSalesHistory(days = 180): { products: Product[]; sales: 
 export const DATASET = generateSalesHistory(180);
 
 export function formatCurrency(v: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-ZA", {
     style: "currency",
-    currency: "USD",
+    currency: "ZAR",
     maximumFractionDigits: 0,
   }).format(v);
 }
