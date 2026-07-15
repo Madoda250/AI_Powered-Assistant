@@ -5,8 +5,9 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from "recharts";
 import {
-  DollarSign, ShoppingCart, Package, Boxes, AlertTriangle, TrendingUp, Activity, Sparkles,
+  Banknote, ShoppingCart, Package, Boxes, AlertTriangle, TrendingUp, Activity, Sparkles,
 } from "lucide-react";
+
 
 import { DATASET, formatCurrency, formatNumber } from "@/lib/data";
 import {
@@ -72,7 +73,7 @@ function DashboardPage() {
       </header>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Total Revenue" value={formatCurrency(totalRevenue)} icon={DollarSign} tone="primary"
+        <StatCard label="Total Revenue" value={formatCurrency(totalRevenue)} icon={Banknote} tone="primary"
           trend={{ value: revTrend, label: "MoM" }} hint="Trailing 6 months" />
         <StatCard label="Total Units Sold" value={formatNumber(totalUnits)} icon={ShoppingCart} tone="info" />
         <StatCard label="Inventory Value" value={formatCurrency(inventoryValue)} icon={Package} tone="success"

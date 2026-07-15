@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ZAxis,
 } from "recharts";
-import { Trophy, Turtle, DollarSign, Star } from "lucide-react";
+import { Trophy, Turtle, Banknote, Star } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/data";
 import { productPerformance } from "@/lib/forecast";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -46,7 +46,7 @@ function AnalyticsPage() {
       <section className="grid gap-4 md:grid-cols-2">
         <PerfList title="Best Sellers" icon={<Trophy className="h-5 w-5 text-[color:var(--warning-foreground)]" />} rows={bestSellers} metric="units" />
         <PerfList title="Slow Movers" icon={<Turtle className="h-5 w-5 text-muted-foreground" />} rows={slowMovers} metric="units" />
-        <PerfList title="Top Revenue" icon={<DollarSign className="h-5 w-5 text-primary" />} rows={topRevenue} metric="revenue" />
+        <PerfList title="Top Revenue" icon={<Banknote className="h-5 w-5 text-primary" />} rows={topRevenue} metric="revenue" />
         <PerfList title="Highest Profit" icon={<Star className="h-5 w-5 text-[color:var(--success)]" />} rows={topProfit} metric="profit" />
       </section>
 
