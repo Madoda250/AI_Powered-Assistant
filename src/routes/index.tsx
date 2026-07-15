@@ -5,8 +5,9 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from "recharts";
 import {
-  DollarSign, ShoppingCart, Package, Boxes, AlertTriangle, TrendingUp, Activity, Sparkles,
+  Banknote, ShoppingCart, Package, Boxes, AlertTriangle, TrendingUp, Activity, Sparkles,
 } from "lucide-react";
+
 
 import { DATASET, formatCurrency, formatNumber } from "@/lib/data";
 import {
