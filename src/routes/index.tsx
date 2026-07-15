@@ -73,7 +73,7 @@ function DashboardPage() {
       </header>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Total Revenue" value={formatCurrency(totalRevenue)} icon={DollarSign} tone="primary"
+        <StatCard label="Total Revenue" value={formatCurrency(totalRevenue)} icon={Banknote} tone="primary"
           trend={{ value: revTrend, label: "MoM" }} hint="Trailing 6 months" />
         <StatCard label="Total Units Sold" value={formatNumber(totalUnits)} icon={ShoppingCart} tone="info" />
         <StatCard label="Inventory Value" value={formatCurrency(inventoryValue)} icon={Package} tone="success"
