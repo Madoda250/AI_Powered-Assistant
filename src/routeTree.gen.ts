@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as ForecastRouteImport } from './routes/forecast'
 import { Route as IndexRouteImport } from './routes/index'
 
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForecastRoute = ForecastRouteImport.update({
   id: '/forecast',
   path: '/forecast',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forecast': typeof ForecastRoute
+  '/inventory': typeof InventoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forecast': typeof ForecastRoute
+  '/inventory': typeof InventoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/forecast': typeof ForecastRoute
+  '/inventory': typeof InventoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forecast'
+  fullPaths: '/' | '/forecast' | '/inventory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forecast'
-  id: '__root__' | '/' | '/forecast'
+  to: '/' | '/forecast' | '/inventory'
+  id: '__root__' | '/' | '/forecast' | '/inventory'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForecastRoute: typeof ForecastRoute
+  InventoryRoute: typeof InventoryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forecast': {
       id: '/forecast'
       path: '/forecast'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForecastRoute: ForecastRoute,
+  InventoryRoute: InventoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
