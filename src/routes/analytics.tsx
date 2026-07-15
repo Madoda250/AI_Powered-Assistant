@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ZAxis,
 } from "recharts";
-import { Trophy, Turtle, DollarSign, Star } from "lucide-react";
+import { Trophy, Turtle, Banknote, Star } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/data";
 import { productPerformance } from "@/lib/forecast";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
