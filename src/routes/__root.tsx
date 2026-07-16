@@ -80,20 +80,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Forecaster AI — AI Inventory & Sales Forecaster" },
+      { title: "Dashboard — Forecaster AI" },
       {
         name: "description",
         content:
-          "Predict sales, optimize inventory, and get AI-powered recommendations with confidence scores and human-in-the-loop guidance.",
+          "Overview of sales, inventory health, and AI insights.",
       },
-      { property: "og:title", content: "Forecaster AI — Inventory & Sales Intelligence" },
+      { property: "og:title", content: "Dashboard — Forecaster AI" },
       {
         property: "og:description",
         content:
-          "AI-powered forecasts, reorder recommendations, and business insights for modern inventory teams.",
+          "Overview of sales, inventory health, and AI insights.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dashboard — Forecaster AI" },
+      { name: "twitter:description", content: "Overview of sales, inventory health, and AI insights." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7bdf41f1-f278-4f1f-8401-e0ccf9fcc914/id-preview-f16d40a5--506841c4-84b4-45ce-b59c-08ccb7bfc70d.lovable.app-1784119392419.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7bdf41f1-f278-4f1f-8401-e0ccf9fcc914/id-preview-f16d40a5--506841c4-84b4-45ce-b59c-08ccb7bfc70d.lovable.app-1784119392419.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
