@@ -96,12 +96,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Dashboard — Forecaster AI" },
       { name: "twitter:description", content: "Overview of sales, inventory health, and AI insights." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7bdf41f1-f278-4f1f-8401-e0ccf9fcc914/id-preview-f16d40a5--506841c4-84b4-45ce-b59c-08ccb7bfc70d.lovable.app-1784119392419.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7bdf41f1-f278-4f1f-8401-e0ccf9fcc914/id-preview-f16d40a5--506841c4-84b4-45ce-b59c-08ccb7bfc70d.lovable.app-1784119392419.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,

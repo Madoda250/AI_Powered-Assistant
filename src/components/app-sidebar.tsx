@@ -7,7 +7,6 @@ import {
   Lightbulb,
   MessageSquare,
   FileText,
-  Sparkles,
 } from "lucide-react";
 
 import {
@@ -39,12 +38,14 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <Link to="/" className="flex items-center gap-2 px-2 py-3">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg gradient-primary text-white shadow-[var(--shadow-elegant)]">
-            <Sparkles className="h-5 w-5" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Forecaster AI"
+            className="h-9 w-9 shrink-0 rounded-lg object-contain shadow-[var(--shadow-elegant)]"
+          />
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <div className="truncate text-sm font-semibold leading-tight">Forecaster AI</div>
-            <div className="truncate text-xs text-muted-foreground">Inventory & Sales</div>
+            <div className="truncate text-xs text-muted-foreground">Predict demand. Perfect stock.</div>
           </div>
         </Link>
       </SidebarHeader>
