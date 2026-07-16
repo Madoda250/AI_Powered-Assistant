@@ -37,15 +37,15 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <Link to="/" className="flex items-center gap-2 px-2 py-3">
+        <Link to="/" className="flex items-center gap-3 px-2 py-3">
           <img
             src="/logo.png"
             alt="Forecaster AI"
-            className="h-9 w-9 shrink-0 rounded-lg object-contain shadow-[var(--shadow-elegant)]"
+            className="h-11 w-11 shrink-0 rounded-lg object-contain shadow-[var(--shadow-elegant)]"
           />
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <div className="truncate text-sm font-semibold leading-tight">Forecaster AI</div>
-            <div className="truncate text-xs text-muted-foreground">Predict demand. Perfect stock.</div>
+            <div className="truncate text-base font-semibold leading-tight">Forecaster AI</div>
+            <div className="truncate text-sm text-muted-foreground">Predict demand. Perfect stock.</div>
           </div>
         </Link>
       </SidebarHeader>
