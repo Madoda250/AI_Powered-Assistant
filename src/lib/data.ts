@@ -74,7 +74,7 @@ export function isoDate(d: Date): string {
 }
 
 function seasonalMultiplier(date: Date, category: Category) {
-  const m = date.getMonth();
+  const m = date.getUTCMonth();
   const base = 1 + 0.15 * Math.sin(((m + 3) / 12) * Math.PI * 2);
   if (category === "Apparel") return base + (m >= 9 || m <= 1 ? 0.25 : 0);
   if (category === "Grocery") return base + (m === 10 || m === 11 ? 0.2 : 0);
@@ -98,11 +98,13 @@ const TREND: Record<string, number> = {
   P013: 1.06, P014: 0.9, P015: 1.03,
 };
 
+const REFERENCE_DATE = "2026-07-16T00:00:00Z";
+
 export function generateSalesHistory(days = 180): { products: Product[]; sales: SalesRow[] } {
   const rand = mulberry32(42);
-  const today = new Date();
+  const today = new Date(REFERENCE_DATE);
   const start = new Date(today);
-  start.setDate(start.getDate() - days + 1);
+  start.setUTCDate(start.getUTCDate() - days + 1);
 
   const products: Product[] = PRODUCT_SEED.map((p) => ({
     ...p,
@@ -112,10 +114,10 @@ export function generateSalesHistory(days = 180): { products: Product[]; sales: 
   const sales: SalesRow[] = [];
   for (let i = 0; i < days; i++) {
     const d = new Date(start);
-    d.setDate(start.getDate() + i);
-    const mmdd = `${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    d.setUTCDate(start.getUTCDate() + i);
+    const mmdd = `${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
     const holiday = HOLIDAYS[mmdd] ?? null;
-    const dow = d.getDay();
+    const dow = d.getUTCDay();
     const weekend = dow === 0 || dow === 6 ? 1.15 : 1;
 
     for (const p of products) {
@@ -148,11 +150,11 @@ export function generateSalesHistory(days = 180): { products: Product[]; sales: 
 export const DATASET = generateSalesHistory(180);
 
 export function formatCurrency(v: number): string {
-  return new Intl.NumberFormat("en-ZA", {
-    style: "currency",
-    currency: "ZAR",
-    maximumFractionDigits: 0,
-  }).format(v);
+  // Use a deterministic, locale-independent format so SSR and the browser
+  // always render the same ZAR string (e.g. "R 1 938 715").
+  const rounded = Math.round(v);
+  const grouped = rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+  return `R\u00a0${grouped}`;
 }
 
 export function formatNumber(v: number): string {
